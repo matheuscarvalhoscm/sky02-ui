@@ -19,7 +19,7 @@
         <button class="delete-button" @click="editingCep = ''">Cancelar</button>
       </template>
       <template v-else>
-        <td>{{ address.cep }}</td>
+        <td>{{ serializeCep(address) }}</td>
         <td>{{ address.street }}</td>
         <td>{{ address.district }}</td>
         <td>{{ address.city }}</td>
@@ -75,6 +75,10 @@ export default defineComponent({
     async handleDelete(cep: string) {
       await api.deleteAddress(cep);
     },
+    serializeCep(address: IAddress): string {
+    const { cep } = address;
+    return `${cep.substring(0, 2)}.${cep.substring(2, 5)}-${cep.substring(5, 8)}`
+}
   },
   async mounted() {
     this.addressesList = await api.fetchAddresses();
