@@ -27,3 +27,8 @@ export const fetchAddresses = async (): Promise<IAddress[]> => {
 
   return addresses;
 };
+
+export const deleteAddress = async (cep: string): Promise<void> => {
+  const URL = `http://localhost:3001/address/${cep}`;
+  await fetch(URL, { method: 'DELETE' });
+};
