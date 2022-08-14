@@ -2,6 +2,7 @@
   <section>
     <table>
       <tr>
+        <th>CEP</th>
         <th>Logradouro</th>
         <th>Bairro</th>
         <th>Cidade</th>
