@@ -1,5 +1,7 @@
 import IAddress from '../interfaces/IAddress';
 
+const URL = `http://localhost:3001/address`;
+
 export const fetchAddress = async (zipCode: string) => {
   const URL = `https://viacep.com.br/ws/${zipCode}/json/`;
   const data = await fetch(URL);
@@ -9,7 +11,6 @@ export const fetchAddress = async (zipCode: string) => {
 };
 
 export const saveAddress = async (address: IAddress): Promise<void> => {
-  const URL = 'http://localhost:3001/address';
   await fetch(URL, { 
     method: 'POST',
     headers: {
@@ -21,7 +22,6 @@ export const saveAddress = async (address: IAddress): Promise<void> => {
 };
 
 export const fetchAddresses = async (): Promise<IAddress[]> => {
-  const URL = 'http://localhost:3001/address';
   const data = await fetch(URL);
   const addresses = data.json();
 
@@ -29,6 +29,5 @@ export const fetchAddresses = async (): Promise<IAddress[]> => {
 };
 
 export const deleteAddress = async (cep: string): Promise<void> => {
-  const URL = `http://localhost:3001/address/${cep}`;
-  await fetch(URL, { method: 'DELETE' });
+  await fetch(`${URL}${cep}`, { method: 'DELETE' });
 };
