@@ -28,6 +28,17 @@ export const fetchAddresses = async (): Promise<IAddress[]> => {
   return addresses;
 };
 
+export const updateAddress = async (cep: string, address: IAddress) => {
+  await fetch(`${URL}/${cep}`, {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(address),
+  });
+};
+
 export const deleteAddress = async (cep: string): Promise<void> => {
-  await fetch(`${URL}${cep}`, { method: 'DELETE' });
+  await fetch(`${URL}/${cep}`, { method: 'DELETE' });
 };
