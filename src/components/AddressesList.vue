@@ -10,6 +10,7 @@
       </tr>
       <tr v-for="address in addressesList" :key="address.cep">
         <template v-if="editingCep === address.cep">
+          <td>{{ editingCep }}</td>
           <td><input type="text" v-model="editing.street"/></td>
           <td><input type="text" v-model="editing.district"/></td>
           <td><input type="text" v-model="editing.city"/></td>
